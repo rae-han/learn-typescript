@@ -31,3 +31,14 @@ const arr4: [number, number, string] = [1, 2, 'a'];
 // 타입 추록을 적극 활용하자.
 const o = '5'; // 문제 없다.
 // const o: string = '5'; // const 라서 스코프의 수명이 끝날 때까지 '5' 여야 하는데 억지로 문자열이라는 타입을 넣어줬다.
+
+// function add(x: number, y: number): number; // 타입
+// function add(x, y) {
+//   return x + y; // 선언
+// }
+
+//
+let abc = 123;
+abc = 'abc' as unknown as number; // as라는 특별한 키워드로 앞에 타입을 강제로 number로 바꿈.
+
+
