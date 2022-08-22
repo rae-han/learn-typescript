@@ -32,3 +32,21 @@ var o = '5'; // 문제 없다.
 //
 var abc = 123;
 abc = 'abc'; // as라는 특별한 키워드로 앞에 타입을 강제로 number로 바꿈.
+// never
+try {
+    var array = [];
+    array.push('hello');
+}
+catch (error) {
+    error;
+}
+// !
+// const head = document.querySelector('#head')!; // !을 붙이면 타입이 Element | null 이 아닌 Element로 된다. 절대 null이 아님을 보장한 다는 뜻이다.
+// console.log(head);
+// head.innerHTML = 'hello';
+//
+var head = document.querySelector('#head');
+if (head) { // if를 안붙이면 개체가 null일 수도 있다고 IDE가 알려준다.
+    console.log(head);
+    head.innerHTML = 'hello';
+}
