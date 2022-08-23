@@ -1,6 +1,7 @@
 const a: number = 5;
 const b: string = '5';
 const PI: 3.14 = 3.14; // const 같은건 애초에 바뀔 필요가 없다. 타입은 최대한 정확하게 적어주는 것이 좋다.
+const PI2: 3.14 = 3.14;
 const c: boolean = true;
 const c2: true = true; // PI와 마찬가지 타입은 최대한 정확하게.
 const d: undefined = undefined;
