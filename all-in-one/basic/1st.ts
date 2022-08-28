@@ -6,6 +6,8 @@
 // const c2: true = true; // PI와 마찬가지 타입은 최대한 정확하게.
 // const d: undefined = undefined;
 // const e: null = null;
+// const f: symbol = Symbol.for('abc');
+// const g: bigint = 1000000n;
 //
 //
 // // function add(x: number, y: number): number/* 리턴 값도 숫자 */ { return x + y }
