@@ -9,4 +9,4 @@ function sum(a: number, b: number) {
   return a + b;
 }
 
-sum('x', 'y');
+sum(1, 2);

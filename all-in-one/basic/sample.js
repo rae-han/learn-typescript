@@ -1,4 +1,3 @@
-"use strict";
 // try {
 //   const array = [];
 //   array[0];
@@ -8,4 +7,4 @@
 function sum(a, b) {
     return a + b;
 }
-sum('x', 'y');
+sum(1, 2);
