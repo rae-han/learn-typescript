@@ -1,14 +1,16 @@
-"use strict";
-// const a: number = 5;
-// const b: string = '5';
-// const PI: 3.14 = 3.14; // const 같은건 애초에 바뀔 필요가 없다. 타입은 최대한 정확하게 적어주는 것이 좋다.
-// const PI2: 3.14 = 3.14;
-// const c: boolean = true;
-// const c2: true = true; // PI와 마찬가지 타입은 최대한 정확하게.
-// const d: undefined = undefined;
-// const e: null = null;
+var a = 5;
+var b = '5';
+var PI = 3.14; // const 같은건 애초에 바뀔 필요가 없다. 타입은 최대한 정확하게 적어주는 것이 좋다.
+var PI2 = 3.14;
+var PI3 = 3.14;
+var c = true;
+var c2 = true; // PI와 마찬가지 타입은 최대한 정확하게.
+var d = undefined;
+var e = null;
 // const f: symbol = Symbol.for('abc');
 // const g: bigint = 1000000n;
+var ee = 2e4;
+console.log(ee);
 //
 //
 // // function add(x: number, y: number): number/* 리턴 값도 숫자 */ { return x + y }

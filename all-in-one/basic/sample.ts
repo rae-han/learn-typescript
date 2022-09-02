@@ -5,8 +5,9 @@
 //   error;
 // }
 
-function sum(a: number, b: number) {
-  return a + b;
-}
+// function sum(a: number, b: number) {
+//   return a + b;
+// }
+//
+// sum(1, 2);
 
-sum(1, 2);
