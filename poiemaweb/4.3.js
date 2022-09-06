@@ -13,12 +13,11 @@
 // const bar = new Bar('bye');
 // console.log(bar); // Bar { text: 'bye' }
 // // console.log(bar.text); // Error! TS2341: Property 'text' is private and only accessible within class 'Bar'.
-//
-// class Baz {
-//   constructor(text: string) {
-//     console.log(text);
-//   }
-// }
-//
-// const baz = new Baz('Hi!'); // Hi!, 생성자 함수에서 초기화 하는 도중 console.log 메서드를 통해 발생
-// console.log(baz); // Baz {}
+var Baz = /** @class */ (function () {
+    function Baz(text) {
+        console.log(text);
+    }
+    return Baz;
+}());
+var baz = new Baz('Hi!');
+console.log(baz);
