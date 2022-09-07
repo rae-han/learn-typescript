@@ -98,13 +98,84 @@
 // makeNoise(new MandarinDuck()); // q~uack! - 4
 
 
-interface IDuck {
-  name: string
-}
+// interface IDuck {
+//   name: string
+// }
+//
+// function quack(duck: IDuck): void {
+//   console.log(`${duck.name} quack!! quack!!!!`);
+// }
+//
+// const myDuck = { name: 'mandarin', age: 10 };
+// quack(myDuck); // mandarin quack!! quack!!!!
 
-function quack(duck: IDuck): void {
-  console.log(`${duck.name} quack!! quack!!!!`);
-}
 
-const myDuck = { name: 'mandarin', age: 10 };
-quack(myDuck); // mandarin quack!! quack!!!!
+// # 선택적 프로퍼티
+// interface Person {
+//   name: string;
+//   gender: string;
+//   age?: number;
+//   address?: string;
+// }
+//
+// const me: Person = {
+//   name: 'raehan',
+//   gender: 'male',
+//   address: 'seoul song-pa'
+// }
+//
+// console.log(me); // { name: 'raehan', gender: 'male', address: 'seoul song-pa' }
+
+
+// # 인터페이스 상속
+// interface Person {
+//   name: string;
+//   age?: number;
+// }
+//
+// interface Developer extends Person {
+//   languages: string[];
+// }
+//
+// const developer: Developer = {
+//   name: 'raehan',
+//   age: 30,
+//   languages: ['JS', 'TS'],
+// }
+//
+// console.log(developer); // { name: 'raehan', age: 30, languages: [ 'JS', 'TS' ] }
+
+
+// interface BackEnd {
+//   languages: string[];
+//   frameworks: string[];
+// }
+//
+// interface FrontEnd {
+//   languages: string[];
+//   libraries: string[];
+// }
+//
+// interface WebDeveloper extends BackEnd, FrontEnd {}
+//
+// const webDeveloper: WebDeveloper = {
+//   languages: ['javascript', 'typescript'],
+//   frameworks: ['expressjs', 'nextjs'],
+//   libraries: ['reactjs', 'vuejs']
+// }
+
+
+// class Person {
+//   constructor(public name: string, public age?: number) { }
+// }
+//
+// interface Developer extends Person {
+//   skills: string[];
+// }
+//
+// const developer: Developer = {
+//   name: 'raehan',
+//   skills: ['JavaScript', 'TypeScript']
+// }
+//
+// console.log(developer); // { name: 'raehan', skills: [ 'JavaScript', 'TypeScript' ] }
