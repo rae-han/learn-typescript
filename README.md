@@ -126,7 +126,7 @@ introduce(me); // My name is raehan
 
 # 4. 덕 타이핑 (Duck typing)
 
-주의해야 할 것은 타입 체크에서 중요한 것은 값을 실제로 가지고 있는 것이다. 인터페이스를 구현하였다는 것만이 타입 체크를 통과하는 유일한 방법은 아니다.
+Typescript의 인터페이스에서 주의해야 할 것은 타입 체크에서 중요한 것은 값을 실제로 가지고 있는 것이다. 인터페이스를 구현하였다는 것만이 타입 체크를 통과하는 유일한 방법은 아니다.
 
 ```tsx
 interface IDuck { // - 1
@@ -181,7 +181,7 @@ quack(myDuck); // mandarin quack!! quack!!!!
 
 ```tsx
 function quack(duck) {
-    console.log("".concat(duck.name, " quack!! quack!!!!"));
+  console.log("".concat(duck.name, " quack!! quack!!!!"));
 }
 var myDuck = { name: 'mandarin', age: 10 };
 quack(myDuck);
