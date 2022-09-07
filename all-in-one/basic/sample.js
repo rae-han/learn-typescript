@@ -1,10 +1,12 @@
-var Person = /** @class */ (function () {
-    function Person(name) {
-        this.name = name;
-    }
-    Person.prototype.greeting = function () {
-        console.log("Hi. ".concat(this.name, "!"));
-    };
-    return Person;
-}());
-console.log(new Person('raehan').greeting());
+"use strict";
+// try {
+//   const array = [];
+//   array[0];
+// } catch(error) {
+//   error;
+// }
+// function sum(a: number, b: number) {
+//   return a + b;
+// }
+//
+// sum(1, 2);

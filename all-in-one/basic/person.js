@@ -1,10 +1,14 @@
-var Person = /** @class */ (function () {
-    function Person(name) {
-        this.name = name;
-    }
-    Person.prototype.greeting = function () {
-        console.log("Hi. ".concat(this.name, "!"));
-    };
-    return Person;
-}());
-console.log(new Person('raehan').greeting());
+"use strict";
+// class Person {
+//   name: string;
+//
+//   constructor(name) {
+//     this.name = name;
+//   }
+//
+//   greeting() {
+//     console.log(`Hi. ${this.name}!`)
+//   }
+// }
+//
+// console.log(new Person('raehan').greeting());
