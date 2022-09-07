@@ -74,25 +74,37 @@
 // introduce(me); // My name is
 
 // # 덕 타이핑
-interface IDuck { // - 1
-  quack(): void;
+// interface IDuck { // - 1
+//   quack(): void;
+// }
+//
+// class MallardDuck implements IDuck { // - 1
+//   quack() {
+//     console.log('Quack!');
+//   }
+// }
+//
+// class MandarinDuck { // - 2
+//   quack() {
+//     console.log('q~uack!');
+//   }
+// }
+//
+// function makeNoise(duck: IDuck): void { // - 3
+//   duck.quack();
+// }
+//
+// makeNoise(new MallardDuck()); // Quack! - 4
+// makeNoise(new MandarinDuck()); // q~uack! - 4
+
+
+interface IDuck {
+  name: string
 }
 
-class MallardDuck implements IDuck { // - 1
-  quack() {
-    console.log('Quack!');
-  }
+function quack(duck: IDuck): void {
+  console.log(`${duck.name} quack!! quack!!!!`);
 }
 
-class MandarinDuck { // - 2
-  quack() {
-    console.log('q~uack!');
-  }
-}
-
-function makeNoise(duck: IDuck): void { // - 3
-  duck.quack();
-}
-
-makeNoise(new MallardDuck()); // Quack! - 4
-makeNoise(new MandarinDuck()); // q~uack! - 4
+const myDuck = { name: 'mandarin', age: 10 };
+quack(myDuck); // mandarin quack!! quack!!!!
