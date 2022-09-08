@@ -93,8 +93,19 @@
 // console.log(myQueue.pop()); // { name: 'Bar' }
 
 
+// function reverse<T>(items: T[]): T[] {
+//   return items.reverse();
+// }
+//
+// const args = [0, 1, 2, 3, 4];
+// const reversed = reverse(args); // 이 시점에 인수에 의해 타입 매개변수가 결정된다.
+// console.log(reversed); // [ 4, 3, 2, 1, 0 ]
+
+
 function reverse<T>(items: T[]): T[] {
   return items.reverse();
 }
 
-console.log(reverse([0, 1, 2, 3, 4])); // [ 4, 3, 2, 1, 0 ]
+const args = [{ name: 'Foo' }, { name: 'Bar' }];
+const reversed = reverse(args);
+console.log(reversed); // [ { name: 'Bar' }, { name: 'Foo' } ]
