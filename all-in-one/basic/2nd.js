@@ -3,69 +3,6 @@
 // // string과 String의 타입은 다르다.
 //
 // type World = "world";
-<<<<<<< HEAD
-// type TS = 'typescript'
-// const c: World = 'world'; // control + space를 하면 자동 완선 추천해준다.
-// const d = `hello ${c}`;
-// type Greeting = `hello ${World | TS}`; // 이렇게도 가능하다. 타입이 hello world도 hello hell도 될수 있다.
-=======
-// const c: World = 'world'; // control + space를 하면 자동 완선 추천해준다.
-// const d = `hello ${c}`;
-//
-// type Greeting = `hello ${World}`; // 이렇게도 가능하다. 타입이 hello world도 hello hell도 될수 있다.
-//
-// let arr1: string[] = [];
-// let arr2: Array<string> = [];
-// function rest(a: string, ...args: string[]) {
-//   console.log(a, args)
-// }
-// rest('1', '2', '3');
-function rest(arg) {
-    var args = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        args[_i - 1] = arguments[_i];
-    }
-    console.log(arg, args);
-}
-rest(1, 2, 3, 4);
-//
-// const tuple: [string, number] = ['1', 1];
-// tuple[2] = 'hello';
-// tuple.push('hello'); // 타입 스크립트가 이것 까진 못막아준다.
->>>>>>> 0b2f29e7f7dd61cc9f935e24d1097130c4cbd731
-//
-// let arr1: string[] = [];
-// let arr2: Array<string> = [];
-// function rest(a: string, ...args: string[]) {
-//   console.log(a, args)
-// }
-// rest('1', '2', '3');
-//
-// const tuple: [string, number] = ['1', 1];
-// tuple[2] = 'hello';
-// tuple.push('hello'); // 타입 스크립트가 이것 까진 못막아준다.
-//
-// const enum Direction {
-//   Up = 3, // 원래 0부터 시작해서 차례대로 0, 1, 2, 3을 부여받지만 이렇게 시작 값을 정해주면 3, 4, 5, 6 이 된다.
-//   Down,
-//   Left,
-//   Right,
-// }
-// // = 로 문자열도 되고 숫자 순서 상관 없이 마구잡으로 지정도 가능하다.
-//
-// const up: Direction = Direction.Up;
-// const down: Direction = Direction.Down;
-// console.log(up, down); // 3, 4
-// // 여러개의 변수를 하나의 그룹으로 묶고 싶을 때 enum으로 묶어주긴 한다.
-//
-// // 객체와 이넘의 차이는 이넘은 자바스크립트로 갈때 사라지고 객체는 안사라지고 남는다.
-// const Direction: {   Up: 0, Down: 1, Left: 2, Right: 3, } = { // 타입을 number가 아닌 정확하게 0123 으로 하려면 왼쪽과 같이 해줘야 하는데 아래와 같은 방법도 있다.
-//   Up: 0,
-//   Down: 1,
-//   Left: 2,
-//   Right: 3,
-// };
-//
 var Direction = {
     Up: 0,
     Down: 1,
