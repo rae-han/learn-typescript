@@ -3,19 +3,34 @@
 // // string과 String의 타입은 다르다.
 //
 // type World = "world";
-var Direction = {
+// type TS = 'typescript'
+// const c: World = 'world'; // control + space를 하면 자동 완선 추천해준다.
+// const d = `hello ${c}`;
+// = 로 문자열도 되고 숫자 순서 상관 없이 마구잡으로 지정도 가능하다.
+var up = 3 /* EDirection.Up */;
+var down = 4 /* EDirection.Down */;
+console.log(up, down); // 3, 4
+// 여러개의 변수를 하나의 그룹으로 묶고 싶을 때 enum으로 묶어주긴 한다.
+// 객체와 이넘의 차이는 이넘은 자바스크립트로 갈때 사라지고 객체는 안사라지고 남는다.
+// const ODirection: {   Up: 0, Down: 1, Left: 2, Right: 3, } = { // 타입을 number가 아닌 정확하게 0123 으로 하려면 왼쪽과 같이 해줘야 하는데 아래와 같은 방법도 있다.
+//   Up: 0,
+//   Down: 1,
+//   Left: 2,
+//   Right: 3,
+// };
+var ODirection = {
     Up: 0,
     Down: 1,
     Left: 2,
     Right: 3
 }; // 위 값, 속성을 상수로 쓰겠다 readonly도 붙는다.
-console.log(Direction);
-console.log(typeof Direction);
-// console.log(keyof typeof Direction);
-function run(dir) { }
+console.log(ODirection);
+console.log(typeof ODirection);
+function run(dir) { console.log(dir); }
 //
 // walk(EDirection.Left);
-run(Direction.Right);
+run(ODirection.Right);
+run(3);
 //
 // // 잠깐 keyof는?
 // const obj3 = { a: 1, b: 2, c: 3 };
