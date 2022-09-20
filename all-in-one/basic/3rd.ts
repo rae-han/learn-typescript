@@ -37,32 +37,41 @@
 // const gg: { a: string } | { b: number } = { b: 123 };
 // // const hh: { a: string } | { b: number } = { };
 //
-type Animal = { breath: true }
-type Mammals = Animal & { breed: true }
-type Human = Mammals & { think: true }
+// type Animal = { breath: true }
+// type Mammals = Animal & { breed: true }
+// type Human = Mammals & { think: true }
 // // 타입 확장(상속)의 개념으로 쓸수 있다.
 //
-interface AA {
-  a: true
-}
-
-interface BB extends AA {
-  b: true
-}
-// type과 interface간의 차이는 있지만 몰라도 된다.
-
-const b2: BB = { a: true, b: true };
-// type 같은 경우 윗 줄 BB위치에 우겨 넣거나 & 같은걸 사용하여 추가할 수 있지만 interface는 힘들다.
+// interface Animal {
+//   breath: true
+// }
+//
+// interface Mammals extends Animal {
+//   breed: true
+// }
+//
+// interface Human extends Mammals {
+//   think: true
+// }
+// // type과 interface간의 차이는 있지만 몰라도 된다.
+//
+// const human: Human = { breath: true, breed: true, think: true };
+// // type 같은 경우 윗 줄 BB위치에 우겨 넣거나 & 같은걸 사용하여 추가할 수 있지만 interface는 힘들다.
 
 // type을 interface에서 extends할 수 있다.
 // 두 가지의 기능적 차이는 있지만 중요하게 생각하기 보다, 표현 방식의 차이에 초첨을 맞추는게 좋다고 한다.
 
-// interface는 여러번 선언 가능하다.
-interface CC {
-  talk: () => void;
-}
-interface CC {
-  eat: () => void;
+// // interface는 여러번 선언 가능하다.
+// interface Human {
+//   talk: () => void;
+// }
+// interface Human {
+//   eat: () => void;
+// }
+//
+// const human: Human = {
+//   talk() { },
+//   eat() { },
 }
 // 여러개 서언한 인터페이스는 합쳐진다.
 // 그래서 라이브러리들은 인터페이스로 돼 있다. 사용자가 확장할 수 있기 때문이다.
