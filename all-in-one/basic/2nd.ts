@@ -51,12 +51,12 @@
 //   Right: 3,
 // };
 
-const ODirection = {
-  Up: 0,
-  Down: 1,
-  Left: 2,
-  Right: 3,
-} as const; // 위 값, 속성을 상수로 쓰겠다 readonly도 붙는다.
+// const ODirection = {
+//   Up: 0,
+//   Down: 1,
+//   Left: 2,
+//   Right: 3,
+// } as const; // 위 값, 속성을 상수로 쓰겠다 readonly도 붙는다.
 //
 // // Using the enum as a parameter
 // function walk(dir: EDirection) {} // dir은 EDirection중에 하나가 와야한다는 뜻.
@@ -81,11 +81,11 @@ const ODirection = {
 //   Right: 3,
 // }
 
-type OD = keyof typeof ODirection;
+// type OD = keyof typeof ODirection;
 
 //
 // // 잠깐 keyof는?
-const object1 = { a: 1, b: 2, c: 3 };
+// const object1 = { a: 1, b: 2, c: 3 };
 // // 위 객체에서 key만 가져오고 싶으면? keyof
 
 // // type Key = keyof object; // obj3은 값인데 타입으로 사용하려니 안된다?
@@ -96,10 +96,10 @@ const object1 = { a: 1, b: 2, c: 3 };
 // // keyof로 abc를 뽑아내고
 // // Key라는 타입으로 만들었다.
 //
-const object2 = { a: 1, b: 2, c: 3 } as const;
-//
-type Key1 = typeof object1[keyof typeof object2];
-type Key2 = typeof object2[keyof typeof object2];
+// const object2 = { a: 1, b: 2, c: 3 } as const;
+// //
+// type Key1 = typeof object1[keyof typeof object2];
+// type Key2 = typeof object2[keyof typeof object2];
 // as const를 사용하는 이유는 널널하게 타입을 뽑아내기 때문(number)
 // 타입이 123이 안되고 number number number가 된다.
 // 위 코드는 벨류들의 값을 타입으로 가져오고 싶다는 뜻.
