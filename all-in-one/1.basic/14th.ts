@@ -61,11 +61,14 @@
 
 // // 생성자 타입
 // // 클래스 자체를 넣고 싶다면 아래와 같이 // 클래스도 생성자이다.
-// function func<T extends abstract new (...args: any) => any>(x: T): T { return x }
+function func<T extends abstract new (...args: any) => any>(x: T): T { return x }
 
-// // class A8 {} // A8 자체가 타입이다.
-// class A8 {
-//   constructor() {} // 이때 컨스트럭터 타입은? 그걸 add8 처럼
-// }
+// class A8 {} // A8 자체가 타입이다.
+class A {
+  constructor() {} // 이때 컨스트럭터 타입은? 그걸 add8 처럼
+}
+
+func(A);
+func(new A); // TS2345: Argument of type 'A' is not assignable to parameter of type 'abstract new (...args: any) => any'.   Type 'A' provides no match for the signature 'new (...args: any): any'.
 
 
