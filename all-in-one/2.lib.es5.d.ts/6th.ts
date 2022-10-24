@@ -32,9 +32,9 @@ interface CustomError extends Error {
     // // 잉 위에서 분명 에러 지정해줬는데 err가 unknown이 됐네?
 
     // // 이럴땐 아래와 같이 한번 변수에 저장해주면 된다.
-    const customError = err as CustomError;
-    console.error(customError.response?.data)
-    customError.response?.data
+    // const customError = err as CustomError;
+    // console.error(customError.response?.data)
+    // customError.response?.data
 
     // 사실 as도 되도록이면 안적어주는것이 좋은데 unknown일때는 써도 된다.
     // any도 오버로드에서는 괜낳다.
