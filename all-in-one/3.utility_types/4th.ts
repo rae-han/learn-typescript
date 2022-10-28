@@ -21,5 +21,3 @@ type NoThis = OmitThisParameter<typeof print>
 // 나머지는 AX가 있는 것으로 퉁치게 해놨다.
 // bind 는 함수형 프로그래밍을 할때 매우 중요한데 문법적 한계로 이런 에로사항이 있다. 보완중이긴 하다..
 // typescript 4.0 concat 같은 경우 개선 됐다.
-
-
