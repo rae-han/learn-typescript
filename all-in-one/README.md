@@ -38,3 +38,21 @@ type MyNotNullable<T> = T extends {} ? T : never
 2. 제로초님 강의를 듣다가 웹스톰을 결제해서 사용 중인데 강의때는 vscode를 사용 하시더라고요. 이건 상관 없는데 가끔 강의할 때 IDE에서 다른 내용이 나오던데 vscode를 따라 쓰는 것이 좋을까요? 아니면 이것과 관련된 설정이 있을까요? 
    지금은 불편함 없이 번갈아 가면서 쓰고 있습니다. 
    문제 되는 부분은 NonNullable을 사용할 때 null, undefined를 제대로 제외 안시켜준다던가 NoThis 구현하실 때나 강의중 keyof typeof [1, 2, 3] 같은 경우 제대로 타입 추론을 못해줬습니다. 지금은 강의와 다르면 vscode로 한번 확인하고 넘어가고 있습니다.
+
+
+npm 에서 ts는 타입스크립트를 지원해주는 라이브러리 dt(d.ts)는 자바스크립트지만 타입스크립트 사용자들을 위해서 타입 정의만 해둔 라이브러리 실제 구혀은 없다.
+
+dt 로 된 프로젝트(예시로 axios)의 package.json 파일 types, typings에 index.d.ts 가 명시 돼 있다. 그게 메인 타이핑 파일이다.
+
+axios 같은 경우에는 index.d.ts, redux 같은 경우 main 즉 가장 중요한 파일은 lib/redux.js 고 타이핑 파일은 types/index.d.ts이다.
+
+redux가 깃헙에 있는 파일과 실제 설치한 파일이 다른 이유
+타입스크립트는 결국 자바스크립트로 변환돼야 노드에서 브라우저에서 돌릴수 있다. 즉 결국 자바스크립트로 변환 돼야하고 npm i 했을때 설치했을 때 나오는 파일이 최종적으로 js여야한다.
+다만 d.ts가 있어야 사용자들이 타입을 참조 가능하다. 그래서 ts프로젝트들은 js, d.ts로 나눠져서 들어온다.
+
+jquery 는 types가 없다? 즉 js로 된 프로젝트, npm에 들어가면 dt 벳지가 있는데 이걸 누르면 @types/jquery로 간다.
+jquery가 js로 된 프로젝트인데 ts로 됑 ㅣㅆ는 이유는 dt 벳지를 눌렸을 때 나오는 프로젝트까지 같이 설치하면 타이핑이 돼 있단 뜻.
+
+위에 나온 axios, redux는 ts로 작성돼 있어서 그것만 설치하면 되지만 jquery는 같이 설치해줘야 한다.
+@types/jquery에 들어가면 definitelyTyped 라는게 있는데 그건 누군가가 오픈소스에 기여를 함으로 같이 완성해 나가는 것.
+

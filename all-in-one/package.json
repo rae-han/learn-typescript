@@ -9,6 +9,10 @@
   "author": "raehan",
   "license": "MIT",
   "dependencies": {
+    "jquery": "^3.6.1",
     "typescript": "^4.8.2"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.14"
   }
 }
