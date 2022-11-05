@@ -141,6 +141,8 @@ function WordRelay(props: P) {
         // 이 코드 기준 useRef<HTMLInputElement> 를 작성해 주면 된다.
         // 저기에 걸리는 이유는 타입 선언부에 제네릭을 넣어주고 초기 값을 null로 하는 것과 제네릭과 초기 값의 타입이 다린 타입 선언이 해당하는거 하나 밖에 없기 때문이다.
       }
+
+      // 참고로 타입스크립트를 사용하면 JSX의 태그에 실제로 없는 속성을 넣었을 때 에러가 난다.
     } else {
       setResult('땡');
       setValue('');
