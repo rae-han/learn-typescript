@@ -1,6 +1,6 @@
 // 모듈 명 밑에(import)가 에러가 나면 해당 모듈을 사용하는 코드는 모두 에러가 안나므로 모듈에 에러가 없는지 먼저 확인해야한다.
 import * as React from 'react';
-import {useState, useCallback, useRef, useEffect, FunctionComponent, FC} from 'react';
+import {useState, useCallback, useRef, useEffect, FunctionComponent, FC, FormEvent, MouseEvent} from 'react';
 // react 들어가보면 export = 로 돼 있다 왜냐면 commonjs 모듈이기 때문에.
 // esModuleInterop 덕분에 import React from 'react'를 사용해도 된다.
 // jsx를 인식해주려면 해당하ㅡㄴ 설정을 해줘야한다. tsconfig에서는 jsx를 react로 해준다.
@@ -37,7 +37,7 @@ function WordRelay(props: P) {
   // function useState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
   const [value, setValue] = useState('');
   const [result, setResult] = useState('');
-  const inputEl = useRef(null);
+  const inputEl = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     console.log('useEffect');
@@ -103,13 +103,29 @@ function WordRelay(props: P) {
   // number 는 원시 값인데 객체처럼 표현한다? number & brand?
   // as로 강제 형변환 하면 이게 된다.
 
+  // const deps: any[] = [] // 1
+  const deps: readonly any[] = [] // 1
+
   useEffect(() => {
     return () => {
-      // clean up 함수는
+      // clean up 함수는 리턴 값이 없어야한다.
     }
-  })
+    // }, [])
 
-  const onSubmitForm = useCallback((e) => {
+    // deps(훅 뒤에 들어가는 배열)은 ReaconlyArray이다.
+    // 읽기 전용 어레이란 뜻이다. 위 deps가 예시
+  }, deps)
+  // 위에 any[] 말고 readyonly any[] 참고
+  // 하지만 deps 말고 그냥 배열 값 [] 을 넣어주면 두번째 배열이 컨텍추얼 인퍼런스 문맥적 추론으로 자동으로 리드온리 어레이로 추론이 된다.
+
+  // useCallback의 첫번째 매개변수는 any[] => any 에서 Function 으로 바꼈다.
+  // 전자는 매개변수, 리턴값이 애니로 타이핑 돼 잇는데 Function은 없어서 타이핑을 따로 해줘야한다.
+  useCallback((e: FormEvent) => {}, []); // e의 타입을 안적어주면 에러가 난다.
+  useCallback((e: MouseEvent<HTMLButtonElement>) => {}, []);
+  // 마우스일 경우 제네릭이 다르다.
+  // 만약 마우스 이벤트를 react 가 아닌 다른 파일에서 가져온다면 맨 위 import에 명확하게 적어주면 제대로 코드에 연결된다. 실제 동작에는 문제 없다.
+
+  const onSubmitForm = useCallback((e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const input = inputEl.current;
     if (word[word.length - 1] === value[0]) {
@@ -118,6 +134,12 @@ function WordRelay(props: P) {
       setValue('');
       if (input) {
         input.focus();
+        // input의 초기화 값이 null일 때도 있어서 에러가 난다. input이 never로 고정돼 있다.
+        // useRef는 기본적으로 MutableRefObject에 걸리는데 그건 값을 저장하는데 사용된다.
+        // 스테이트는 화면을 리렌더링 시키고 Ref는 리렌더링 안시킨다.
+        // RefObject에 걸려야 하는데 제네릭으로 주는 수 밖에 없다.
+        // 이 코드 기준 useRef<HTMLInputElement> 를 작성해 주면 된다.
+        // 저기에 걸리는 이유는 타입 선언부에 제네릭을 넣어주고 초기 값을 null로 하는 것과 제네릭과 초기 값의 타입이 다린 타입 선언이 해당하는거 하나 밖에 없기 때문이다.
       }
     } else {
       setResult('땡');
