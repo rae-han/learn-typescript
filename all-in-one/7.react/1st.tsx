@@ -1,6 +1,7 @@
 // 모듈 명 밑에(import)가 에러가 나면 해당 모듈을 사용하는 코드는 모두 에러가 안나므로 모듈에 에러가 없는지 먼저 확인해야한다.
 import * as React from 'react';
-import {useState, useCallback, useRef, useEffect, FunctionComponent, FC, FormEvent, MouseEvent} from 'react';
+import {useState, useCallback, useRef, useEffect, FunctionComponent, FC, FormEvent, MouseEvent, ChangeEvent, UIEvent} from 'react';
+
 // react 들어가보면 export = 로 돼 있다 왜냐면 commonjs 모듈이기 때문에.
 // esModuleInterop 덕분에 import React from 'react'를 사용해도 된다.
 // jsx를 인식해주려면 해당하ㅡㄴ 설정을 해줘야한다. tsconfig에서는 jsx를 react로 해준다.
@@ -97,7 +98,7 @@ function WordRelay(props: P) {
   function euroToUsd2(euro: EUR): number {
     return (euro * 1.1)
   }
-  euroToUsd2(krw); // 막힌다! number 라는 원시 값인데도 새로운 값을 만들어 낸 것.
+  // euroToUsd2(krw); // 막힌다! number 라는 원시 값인데도 새로운 값을 만들어 낸 것.
   // 새로 타입을 만들수 있지만, 문제는 진짜 진재하는 말이 되는 타입은 아니다.
   // K & { __brand: T } -> 말이 안된다.
   // number 는 원시 값인데 객체처럼 표현한다? number & brand?
@@ -142,7 +143,7 @@ function WordRelay(props: P) {
         // 저기에 걸리는 이유는 타입 선언부에 제네릭을 넣어주고 초기 값을 null로 하는 것과 제네릭과 초기 값의 타입이 다린 타입 선언이 해당하는거 하나 밖에 없기 때문이다.
       }
 
-      // 참고로 타입스크립트를 사용하면 JSX의 태그에 실제로 없는 속성을 넣었을 때 에러가 난다.
+      // 참고로 타입스크립트를 사용하면 JSX의 태그에 실제로 없는 속성을 넣었을 때 에러가 때다.
     } else {
       setResult('땡');
       setValue('');
@@ -152,7 +153,7 @@ function WordRelay(props: P) {
     }
   }, [word, value]);
 
-  const onChange = useCallback((e) => {
+  const onChange = useCallback((e: FormEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value)
   }, []);
 
@@ -171,5 +172,11 @@ function WordRelay(props: P) {
   </>
 );
 };
+
+// 타입스크립트를 도입하더라도 모든걸 다 엄격하게 검사해주는 건 아니다.
+// 라이브리별로 약간 기본값을 준다던가 여유있게 설계해둔 것이 있는데, 그렇다고 그냥 넘겨쓰지 말고 정확하게 기입하는 것을 지향해야한다.
+
+// bivarianceHack 이변성
+//
 
 export default WordRelay;
