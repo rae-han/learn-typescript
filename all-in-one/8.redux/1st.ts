@@ -22,25 +22,28 @@ const anyAction = { type: 'example', data: 123 };
 const reducer = combineReducers({
   // user 상태 변화에 대한 규칙은 아래에
   user: (state, action) => {
-   switch (action.type) {
-     case 'LOGIN':
-       return ({
-         isLoggedIn: true,
-         data: {
-           nickname: 'name',
-           password: 'password'
-         }
-       })
-     default:
-       return state
-   }
+    switch (action.type) {
+      case 'LOGIN':
+        return ({
+          isLoggedIn: true,
+          data: {
+            nickname: 'name',
+            password: 'password'
+          }
+        })
+      default:
+        return state
+    }
   },
   posts: (state, action) => {
     switch (action.type) {
       case 'ADD_POST':
         return (
-          // [...state, action.data]
-          state
+          [...state, action.data]
+          // .. state에 에러가 나는 이유는 state가 unknown이라서
+          // 1. stete를 as 로 고정
+          // 2. 타입 가드를 사용
+          // 3. 세번째 방밥은? 라이브러리를 제대로 타이핑 하는 것.
         )
       default:
         return state
@@ -60,3 +63,17 @@ store.dispatch(login)
 store.getState();
 
 store.dispatch({ type: 'ADD_POST', data: { title: 'redux', context: 'lib of react' }})
+
+// 리덕스의 미들웨어는 액션이 스토어로 전달되기 전에 무언가 하기 때문에 미들웨어이다.
+// 리덕스에 미들웨어라는 타입이 있다.
+// 3단으로 이뤄진 고차함수이다.
+
+// 액션은 객체꼴인게 기본 원칙인데 thunk를 이용하여 함수로 바꿀 수 있다.
+
+// 복합한 함수 액션은 타입또한 복잡한데(받는 값이 달라지면 더더욱) 이 타입을 일일히 적지 말고 어딘가 선언해주고 변수로 넣어주면 가독성이 더 올라간다.
+// 그건 개발자 스스로 하는 것.
+
+// 액션은 원래 객체꼴인데 thunk를 이용하여 함수로 바꾸면 타입 에러가난다.
+// 이런건 보통 라이브러리에 해결할 방법이 있는데 thunk 기준으로도 thunkMiddleware를 사용하면 된다.
+// thunkMiddleware as ThunkMiddleware를 이용하여 오버라이딩 해준다.
+
