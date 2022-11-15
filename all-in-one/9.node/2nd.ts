@@ -88,7 +88,7 @@ const middleware: RequestHandler<{ paramType: string }, { message: string }, { b
   req.flash();
 
   req.session
-  req.user?.zerocho;
+  req.user?.name;
 };
 
 app.get('/', middleware);
@@ -127,3 +127,23 @@ app.listen(8080, () => {
 
 // express 특성이 패키지를 하나 추가할 때마다 req에 들어가서 사용 가능하다.
 // req.session 을 쓰면 타입스크립트 상으론 에러는 안나지만 실제로 미들웨어로 등록(app.use(session( ... ))해야 사용 가능하다.
+
+// passport를 등록하고 interface Request를 확인하면 Request가 여러개 참조 가능한데 그 중에 passport도 있다.
+// passport를 등록하면 interface Request가 합쳐지는데 정확하게는 각 패키지의
+// declare global { ...
+//  namespcae Express { ...
+//   interfacle Request { <- 여기에 등록 돼 있다.
+// 이다.
+// passport를 등록(app.use)해서 req에 user는 생겼지만 user 안에 name 프로퍼티를 넣으려면 에러가 뜬다. user 안에 해당 프로퍼티가 없기 때문이다.
+// 그럼 아까 말한 방법으로 확장을 하면 된다.
+// index.d.ts 참조.
+// 왜 declare 해서 export 하면 될까?
+// ambient 모듈 때문 declare 밖에 import, export {} 를 한번 써줘야한다. 그래야 다른 파일에서 적용 된다.
+// 파일면은 굳이 types 일 필요 없고 그냥 .d.ts 라는 확장자가 중요하다.
+
+// declaration merging 의 인터페이스 네임스페이스 한번 볼 것
+// 여기에 declare global 에 import export가 필요한지 나와있는데 declare global 할거면 해당 파일이 모듈 시스템이여야 하고
+// 타입스크립트에서 모듈 시스템으로 만드려면 import export 키워드가 필요하다.
+
+// interface Error 는 그냥 됐던게 declare global이 아니기 때문이다.
+
