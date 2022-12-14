@@ -1,3 +1,4 @@
+"use strict";
 // # 변수와 인터페이스
 // interface Todo {
 //   id: number,
@@ -148,15 +149,17 @@
 //   frameworks: ['expressjs', 'nextjs'],
 //   libraries: ['reactjs', 'vuejs']
 // }
-var Person = /** @class */ (function () {
-    function Person(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    return Person;
-}());
-var developer = {
-    name: 'raehan',
-    skills: ['JavaScript', 'TypeScript']
-};
-console.log(developer);
+// class Person {
+//   constructor(public name: string, public age?: number) { }
+// }
+//
+// interface Developer extends Person {
+//   skills: string[];
+// }
+//
+// const developer: Developer = {
+//   name: 'raehan',
+//   skills: ['JavaScript', 'TypeScript']
+// }
+//
+// console.log(developer); // { name: 'raehan', skills: [ 'JavaScript', 'TypeScript' ] }

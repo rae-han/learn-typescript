@@ -3,6 +3,9 @@
 // // interface A { name: string }
 // // interface A { age: number }
 // // const person: A = { name: 'raehan', age: 33 }
+// type Person = { name: string };
+// type Person = { age: number };
+// // Error! - TS2300: Duplicate identifier 'Person'.
 //
 // // # 객체 리터럴에서는 잉여 속성 검사를 한다.
 // interface A { a: number }
@@ -17,7 +20,14 @@
 // // 이때 a 함수 리턴 값에 :void를 표기해주고 return 값을 만들면 에러가 뜬다.
 // // undefined는 되고 null은 안된다.
 // // 보통 return; 을 하는 함수에서 뜬다.
-//
+// function notReturn1(): void {
+//   return undefined;
+// }
+// function notReturn2(): void {
+//   // return null; // Error! - TS2322: Type 'null' is not assignable to type 'void'.
+// }
+// //
+// const notHas = notReturn();
 // interface Human {
 //   talk: () => void
 // }
@@ -27,21 +37,21 @@
 //
 // // void의 3가지 종류
 // // 함수 리턴 값
-// function void1(): void {
+// function voidFunc(): void {
 //   return;
 // }
 // // 메서드로 선언할 때
 // interface VoidObject {
-//   void2: () => void
+//   voidMethod: () => void
 // }
 // const instVoidObject: VoidObject = {
-//   void2() { return 'return' }
+//   voidMethod() { return 'return' }
 // }
 // // 매개변수
-// function voidFunc(callback: () => void) {
+// function func(callback: () => void) {
 //
 // }
-// voidFunc(() => {
+// func(() => {
 //   return 'return';
 // })
 // // 함수 리턴 값의 void는 리턴 값이 없다는 의미
@@ -54,28 +64,29 @@
 // //
 // // }
 // let target: number[] = [];
-// forEach([1,2,3], el => target.push(el));
+// forEach([1,2,3], el => target.push(el)); // TS2322: Type 'number' is not assignable to type 'undefined'.
 // // push 는 리턴값이 number인데 타입 정의는 undefined라 에러가 난다.
 // // 근데 undefined대신 void를 사용해도 에러가 안난다??
 // // 매개변수로 쓰이는 void는 실제 리턴 값이 무엇이든 상관하지 않겠다는 의미.
 // // void인지 아닌지에 따라서 표현에 차이가 난다.
 // // 아래 코드는 둘다 정상적인 코드이지만 콜백 함수의 정의에 void를 사용하지 않고 undefined를 쓸 경우 각기 다른 에러가 난다.
-// forEach([1,2,3], el => { target.push(el) });
-// forEach([1,2,3], el => target.push(el));
+// forEach([1,2,3], el => { target.push(el) }); // Error - TS2345: Argument of type '(el: number) => void' is not assignable to parameter of type '(el: number) => undefined'.   Type 'void' is not assignable to type 'undefined'.
+// forEach([1,2,3], el => target.push(el)); // Error - TS2322: Type 'number' is not assignable to type 'undefined'.
 //
-// interface VoidTest {
+// interface ITestObject {
 //   test: () => void;
 // }
-// const voidTest: VoidTest = {
+// const testObject: ITestObject = {
 //   test() { return 1 }
 // }
-// // const b = voidTest.test(); // 실제로 타입 스크립트는 void 리턴을 사용 안하는 걸로 인식하여 return '3'부분을 신경 쓰지 않기(무시하기) 때문에 에러가 뜬다.
+// // const value = testObject.test();
+// // 실제로 타입 스크립트는 void 리턴을 사용 안하는 걸로 인식하여 return '3'부분을 신경 쓰지 않기(무시하기) 때문에 에러가 뜬다.
 // // 위 코드를 as를 통해 강제로 바꿔줄순 있는데 타입 스크립트는 실수로 본다.
-// // const b = voidTest.test() as number;
+// // const value = testObject.test() as number; // Error - TS2352: Conversion of type 'void' to type 'number' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
 // // 내가 책임 질수 있을 땐??
-// const b = voidTest.test() as unknown as number;
+// const value = testObject.test() as unknown as number;
 // // 앞에 꺾쇠를 통해서 강제로 맞춰주는 방법도 있기는 하다.
-// // const b = <number><unknown>voidTest.test();
+// const value = <number><unknown>testObject.test();
 // // <> 보다 as를 더 권장하는 이유는 react의 jsx같은 경우 <>가 있어서 ts가 이해를 잘 못할때가 있기 때문이다.
 //
 // // declare를 쓸 일이 있나요?
@@ -87,14 +98,14 @@
 // // 일단 any 쓸 빠엔 unknown을 사용하자.
 // // any는 타입 체크를 포기한다는 뜻.
 // // unknown은 타입을 정해줘서 사용한다는 뜻.
-// const c: unknown = voidTest.test();
-// (c as VoidTest).test();
+// const c: unknown = testObject;
+// (c as ITestObject).test();
 // // unknown은 지금은 당장 타입을 정확하게 모를때 사용하는 것.
 // // type을 포기한 any와는 다르다.
 // // 주로 try-catch에서 catch안에 있는 에러가 정확히 뭐가 올지 모르기 때문에 사용한다.
 // try {
 //
-// } catch(error) {
+// } catch(error: unknown) {
 //   (error as Error).message;
 //   // Axios 에러면?
 //   // (error as AxiosError)

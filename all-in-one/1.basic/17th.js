@@ -2,7 +2,7 @@
 // default parameters
 const func1 = (param1 = 1, param2 = 2) => {
     // 기본값을 통해서 자동으로 추론을 한다. 위 같은 경우 number
-    return '3';
+    return 3;
 };
 const func2 = (param = { children: 'abc xyz' }) => {
 };

@@ -1,7 +1,7 @@
 "use strict";
 // interface Parents {
 //   readonly a: string;
-//   private b: string;
+//   b: string;
 // }
 //
 // class Children implements Parents {
