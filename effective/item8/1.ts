@@ -50,4 +50,10 @@ const myClass: typeof MyClass = MyClass;
 
 console.log(myClass); // [class MyClass]
 
+function email({
+  person, subject
+}) {
+
+}
+
 export {}
