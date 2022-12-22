@@ -16,5 +16,23 @@ const person3: Person = { name: 'Reahan', age: 30 }
 const tempPerson = { name: 'Reahan', age: 30, married: false }
 const person4: Person = tempPerson;
 
+interface A {
+  name: string
+}
+
+interface B {
+  birth: string;
+  death?: string;
+}
+
+//
+type C = A & B;
+
+const cc: C = {
+  name: 'asdf',
+  birth: 'qwer',
+  // death: 'zxcv',
+  // etc: 'asdf'
+}
 
 export {}

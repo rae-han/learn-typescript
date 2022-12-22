@@ -23,8 +23,11 @@ const declarePeople4 = ['alice', 'bob', 'jan'].map((name, index): Person => ({ n
 const elNull = document.querySelector('#app'); // Element | null 타입
 const el = document.querySelector('#app')!; // Element 타입
 
-// const body = document.body;
+const body = document.body;
 // const elFromBody = body as Person;
 // // TS2352: Conversion of type 'HTMLElement' to type 'Person' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+
+// const elFromBody = body as unknown;
+// const elFromBody = body as unknown as Person;
 
 export {}
