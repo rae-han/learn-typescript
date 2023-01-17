@@ -37,4 +37,20 @@ interface State {
   pageContents: string;
 }
 
-// interface
+// interface TopNavState {
+//   userId: string
+//   pageTitle: strings
+//   recentFiles: string
+// }
+
+// type TopNavState = {
+//   userId: State['userId']
+//   pageTitle: State['pageTitle']
+//   recentFiles: State['recentFiles']
+// }
+
+// type TopNavState = {
+//   [k in 'userId' | 'pageTitle' | 'recentFiles']: State[k]
+// }
+
+type TopNavState = Pick<State, 'userId' | 'pageTitle' | 'recentFiles'>
