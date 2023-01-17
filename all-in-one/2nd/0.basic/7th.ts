@@ -71,10 +71,13 @@ const what = cat.meow(); // 실제 리턴값 nyang이 무시되고 void가 된�
 // 원칙적으론 void로 하면 리턴값 쓰면 안된다.
 // 타입스크립트에서 위 forEach 같은 경우 때문에 예외로 만들었기 때문.
 
+// whit.toString();
+
 const _what = cat.meow() as unknown as number;
 // as number로 못바꿔준다. 타입스크립트가 실수로 보기 때문
 // 내가 책임 진다면 위처럼 가능..
 // 또는 <>로 가능은한데 jsx랑 겹칠까봐..
+_what.toString();
 
 // declare는 많이 쓰일까?
 // <script> 태그가 서로 나눠져 있고 다른 스크립트에 선언돼 있는 함수를 사용하려 하는데 타입스크립트 입장에서는 선언돼 있는지 모른다.
