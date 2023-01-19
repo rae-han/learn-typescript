@@ -4,15 +4,15 @@ array.forEach((value: number) => {})
 array.map((value: number) => value)
 array.filter((value) => value)
 
-interface Array<T> {
-  forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void; // Array<T>에서 타입이 정해진다.
-  map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
-
-  // 같은 함수가 여러가지 방법으로 사용될 경우 타입이 여러개 선언돼 있을 수 있다.
-  filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[];
-  filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[]; // unknown 있는 것보단 타입이 정확한게 보통은 더 낫다.
-  // 위 예제를 기준으로 return 값이 number 이므로 위에 것일 것이다.
-}
+// interface Array<T> {
+//   forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void; // Array<T>에서 타입이 정해진다.
+//   map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
+//
+//   // 같은 함수가 여러가지 방법으로 사용될 경우 타입이 여러개 선언돼 있을 수 있다.
+//   filter<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[];
+//   filter(predicate: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[]; // unknown 있는 것보단 타입이 정확한게 보통은 더 낫다.
+//   // 위 예제를 기준으로 return 값이 number 이므로 위에 것일 것이다.
+// }
 
 // 참고로 타입 앨리어스와 클래스도 제네릭 붙일 수 있다.
 type T<T> = {}
