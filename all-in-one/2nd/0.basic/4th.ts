@@ -26,12 +26,19 @@ const ODirection1 = {
 // 변수명 뒤에 타입을 기입하는 방법도 있지만 값으로 지정한 걸 그대로 타입으로 쓰려면, 상수를 쓰겠다는 뜻으로 as const를 붙여주면 된다.
 
 // 참고로 enum은 타입으로 사용 가능하므로 아래와 같이 사용 가능하다.
-function walk(dir: EDirection) {}
+function walk(dir: EDirection) {
+  console.log(dir)
+}
 // 참고로 숫자로 구성된 enum의 경우 값의 제한이 없으므로 0~3 외의 값 8, 9 같은 것도 들어간다.
+
+type typeofODirection = typeof ODirection;
+type keyofTypeofODirection = keyof typeof ODirection;
 
 // 객체로 한걸 타입으로 쓰려면?
 type TDirection = typeof ODirection[keyof typeof ODirection];
-function run(dir: TDirection) {}
+function run(dir: TDirection) {
+  console.log(dir)
+}
 
 const obj = { a: 1, b: 2, c: 3 };
 // keyof 는 위 객체에서 a, b, c만 꺼내올 수 있다.

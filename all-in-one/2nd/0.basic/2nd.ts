@@ -9,4 +9,6 @@ type Greeting = `hello ${World}`;
 const c: Greeting = 'hello world';
 const d: Greeting = 'hello hell';
 
+console.log(a, b, c, d)
+
 export {}
