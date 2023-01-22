@@ -101,3 +101,63 @@ const newRaehan7: O1<Profile, 'married'> = {
 // Extract는 Exclude의 반대
 type _Extract<T, U> = T extends U ? T : never;
 type extracted = _Extract<keyof Profile, 'married'>
+
+// Required 는 옵셔널은 모드 옵셔널이 아닌 필수로 만드는 타입
+type OptionalProfile = Partial<Profile>
+
+type RequiredProfile1 = Required<OptionalProfile>
+
+type _Required<T> = {
+  [Key in keyof T]-?: T[Key]
+  // modifier
+  // - 하면 옵셔널은 뺀다.
+  // + 도 되는데 똑같다..
+}
+
+type RequiredProfile2 = _Required<OptionalProfile>
+
+// 수정 못하게 막는 Readonly
+const newRaehan8: Readonly<Profile> = {
+  name: 'raehan',
+  age: 30,
+  married: false,
+}
+// newRaehan8.age = 20;
+
+type _Readonly<T> = {
+  readonly [Key in keyof T]: T[Key]
+  // readonly를 빼려면 -readonly를 하면 된다.
+}
+const newRaehan9: _Readonly<Profile> = {
+  name: 'raehan',
+  age: 30,
+  married: false,
+}
+// newRaehan9.age = 20;
+
+// 아무 객체를 표현하고 싶을 때
+interface Obj {
+  [key: string]: number;
+}
+const temp1: Obj = { a: 1, b: 2, c: 3 };
+const temp2: Record<string, number> = { a: 1, b: 2, c: 3 };
+
+type _Record<T extends keyof any, S> = {
+  // 객체의 키는 string number symbol 만 되므로 위 제네릭 조건이 붙어야한다.
+  [key in T]: S
+}
+const temp3: _Record<string, number> = { a: 1, b: 2, c: 3 };
+
+type All = string | number | null | undefined | boolean;
+type NN1 = NonNullable<All>; // null, undefined를 빼고 들고오고 싶을 때
+
+type _NonNullable1<T> = T extends null | undefined ? never : T;
+type NN2 = _NonNullable1<All>;
+
+type _NonNullable2<T> = T & {};
+type NN3 = _NonNullable2<All>;
+
+
+
+export {}
+
