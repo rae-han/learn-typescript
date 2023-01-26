@@ -3,17 +3,17 @@
 
 type Language = 'JS' | 'TS' | 'ELX';
 interface GovernedLanguage {
-  language: Language,
-  organization: string,
+  language: Language;
+  organization: string;
 }
 
 function complain(language: GovernedLanguage) {}
 
-complain({
-  language: 'TS',
-  organization: 'MS',
-})
-
+// complain({
+//   language: 'TS',
+//   organization: 'MS',
+// });
+//
 // const ts = {
 //   language: 'TS',
 //   organization: 'MS',
@@ -43,4 +43,4 @@ const ts = {
 
 complain(ts);
 
-export {}
+export {};

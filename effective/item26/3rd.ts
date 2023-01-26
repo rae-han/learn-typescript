@@ -28,13 +28,13 @@ function callWithRandomNumbers(fn: (n1: number, n2: number) => void) {
 //   a;
 //   b;
 //   console.log(a + b);
-// }
+// };
 
 // 다만 가능하다면 전체 함수 표현식에 타입 선언을 적용하는 것이 좋다.
 const fn: (a: number, b: number) => void = (a, b) => {
   a;
   b;
   console.log(a + b);
-}
+};
 
 callWithRandomNumbers(fn);

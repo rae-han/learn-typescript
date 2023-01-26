@@ -1,4 +1,4 @@
-function setLang(lang: string) { }
+function setLang(lang: string) {}
 
 setLang('JS');
 
@@ -12,11 +12,10 @@ const lang = 'JS';
 // 타입스크립트에서는 string이 아닌 더 정확하게 문자열 리터럴 타입인 JS로 타입추론 해준다.
 // JS는 Languages보다 너 좁은 타입이므로 더 넓은 타입인 Languages에 대입 가능하다.
 
-
-setLang(lang)
+setLang(lang);
 
 type Languages = 'JS' | 'TS' | 'ELX';
-function setLanguage(lang: Languages) { }
+function setLanguage(lang: Languages) {}
 
 setLanguage('JS');
 setLanguage(lang); // TS2345: Argument of type 'string' is not assignable to parameter of type 'Languages'.
@@ -27,10 +26,10 @@ setLanguage(lang); // TS2345: Argument of type 'string' is not assignable to par
 
 // # 튜플 사용시 주의점.
 // function panTo(where: [number, number]) { }
-
+//
 // panTo([10, 20]);
 
-// const loc = [10, 20]
+// const loc = [10, 20];
 // panTo(loc);
 // TS2345: Argument of type 'number[]' is not assignable to parameter of type '[number, number]'. Target requires 2 element(s) but source may have fewer.
 // 직접 인자 값으로 넣으면 할당 가능하지만
@@ -47,22 +46,21 @@ setLanguage(lang); // TS2345: Argument of type 'string' is not assignable to par
 // const 는 단지 값이 가리키는 참조가 불변 값이라면
 // as const 는 그 값의 내부까지 불변값이 된다.
 
-
 const loc = [10, 20] as const;
-panTo(loc)
+panTo(loc);
 // TS2345: Argument of type 'readonly [10, 20]' is not assignable to parameter of type '[number, number]'. The type 'readonly [10, 20]' is 'readonly' and cannot be assigned to the mutable type '[number, number]'.
 // 이 경우 값은 number[]가 아니라 readonly [10, 20]으로 추론된다.
 // readonly [10, 20]은 [number, number]보다 더 좁은 타입이므로 매개변수 일 경우 대입할 수 없다.
 // 이때 any를 사용하지 않는 최선의 해결책은 매개변수에 readonly를 붙이는 것이다.
-function panTo(where: readonly [number, number]) { }
+function panTo(where: readonly [number, number]) {}
 
 // 함수 시그니처(타입 시그니처, 메소드 시그니처)를 수정할 수 없는 경우라면 타입 구문을 사용해야 한다.
 // as const는 문맥 손실과 관련한 문제를 해결할 수 있지만,
 // 타입 정의에 실수가 있다면(위를 예로 튜플에 요소를 추가한다면) 오류는 타입 정의가 아닌 호출하는 곳에서 발생한다는 단점이 있다.
 // 여러 겹 중첩된 객체에서 오류가 발생한다면 근본적인 원인을 파악하기 어렵다는 단점으로 이어진다.
 
-const loc2 = [10, 20, 30] as const;
+// const loc2 = [10, 20, 30] as const;
 // panTo(loc2)
 // TS2345: Argument of type 'readonly [10, 20, 30]' is not assignable to parameter of type 'readonly [number, number]'.   Source has 3 element(s) but target allows only 2.
 
-export {}
+export {};
