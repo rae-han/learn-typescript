@@ -8,6 +8,8 @@ function extent(nums: number[]) {
     } else {
       min = Math.min(min, num);
       max = Math.max(max, num);
+      // Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+      // Type 'undefined' is not assignable to type 'number'.
     }
   }
 
