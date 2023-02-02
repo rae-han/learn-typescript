@@ -6,7 +6,7 @@ const y: Object = 'hi';
 
 // const xx: object = 'hi';
 const yy: object = { hello: 'world' };
-const z: unknown = 'bye'
+const z: unknown = { hello: 'world' };
 
 // unknown도 {}, Object 처럼 모든 값을 다 받을수 있는데 뭐가 다를까
 

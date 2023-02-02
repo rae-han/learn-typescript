@@ -1,7 +1,7 @@
 // // interface는 2번 선언하면 선언한 타입들이 합쳐지지만 type alias는 에러가 난다.
 // // interface A { name: string }
 // // interface A { age: number }
-// // const person: A = { name: 'raehan', age: 33 }
+// // const person: A = { name: 'raehan', age: item33 }
 
 // type Person = { name: string };
 // type Person = { age: number };
