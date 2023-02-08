@@ -1,12 +1,12 @@
 // import React, { MouseEvent, MouseEventHandler } from 'react';
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 // function funcStatement() {}
 // const funcExpression = function() {}
 // const funcArrow = () => {}
 
 type TCalc = (x: number, y: number) => number;
-const pow: TCalc = (base, exponent) => base**exponent;
+const pow: TCalc = (base, exponent) => base ** exponent;
 
 const add: TCalc = (x, y) => x + y;
 const sub: TCalc = (x, y) => x - y;
@@ -14,7 +14,7 @@ const mul: TCalc = (x, y) => x / y;
 const div: TCalc = (x, y) => x % y;
 
 function power(base: number, exp: number): number {
-  return base**exp
+  return base ** exp;
 }
 
 let funcType: (arg1: number, arg2: number) => number;
@@ -27,20 +27,19 @@ const fetchData = async () => {
   //   throw new Error('Request failed: ' + response.status);
   // }
 
-  return response
-}
+  return response;
+};
 
 const exec = async () => {
   try {
     const response = await fetchData();
 
     const result = await response.json();
-    console.log(result)
+    console.log(result);
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
-
-}
+};
 
 exec();
 
@@ -68,6 +67,4 @@ exec();
 //   return response;
 // }
 
-
-
-export {}
+export {};
