@@ -19,8 +19,9 @@ function hasTwelveLetterKey(o: object) {
   for (const key in o) {
     if (key.length === 12) {
       console.log(key, o);
-      console.log(key, o[key]);
+      // console.log(key, o[key]);
       // Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'
+      // No index signature with a parameter of type 'string' was found on type '{}'.
       return true;
     }
   }
