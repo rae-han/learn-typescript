@@ -1,23 +1,24 @@
 // is도 타입 가드의 하나, 리턴 값에 사용
 // 타입을 구분해주는 커스텀 함수를 개발자가 직접 만들수 있다.
 interface Cat {
-  meow: string
+  meow: string;
 }
 
 interface Dog {
-  bow: string
+  bow: string;
 }
 
-function catOrDog(a: Cat | Dog): a is Dog {
+function isDogAmongCatOrDog(a: Cat | Dog): a is Dog {
   if ((a as Cat).meow) {
-    return false
+    return false;
   }
 
   return true; // 강아지임을 찾아내는 것은 직접 구현해야 한다.
 }
 
 function pet(a: Cat | Dog) {
-  if (catOrDog(a)) { // 커스텀 타입 가드는 if문 안에 쓴다.
+  if (isDogAmongCatOrDog(a)) {
+    // 커스텀 타입 가드는 if문 안에 쓴다.
     console.log(a.bow);
   }
 
@@ -30,11 +31,11 @@ function pet(a: Cat | Dog) {
 // is가 있다?? 타입 가드.
 const isRejected = (input: PromiseSettledResult<unknown>): input is PromiseRejectedResult => {
   return input.status === 'rejected';
-}
+};
 
 const isFulfilled = <T>(input: PromiseSettledResult<T>): input is PromiseFulfilledResult<T> => {
   return input.status === 'fulfilled';
-}
+};
 
 const promises = await Promise.allSettled([Promise.resolve('a'), Promise.resolve('b')]);
 const errors = promises.filter(isRejected); // 실패한 것만 구별.
@@ -53,5 +54,4 @@ const errors2 = promises.filter((promise) => promise.status === 'rejected');
 
 // 이런식으로 타입스크립트가 추론을 잘못할 때 커스텀 타입가드를 사용하면 된다.
 
-
-export { }
+export {};
