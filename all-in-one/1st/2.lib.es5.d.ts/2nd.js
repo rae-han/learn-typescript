@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 // const a: Arr = [1, 2, 3];
 const a = [1, 2, 3]; // 11.
 a.forEach((item) => {
@@ -20,3 +18,4 @@ b.forEach((item) => {
     console.log(item);
     return '3';
 });
+export {};

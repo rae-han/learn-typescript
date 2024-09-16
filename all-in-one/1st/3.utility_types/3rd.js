@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const p1 = Promise.resolve(1).then((a) => a + 1).then((a) => a + 1).then((a) => a.toString());
 // 프로미스는 Promise<결괏값> 타입으로 표시한다.
 // 바로 성공하는 프로미스로 1을 리졸브 한 다음 바로 옆에 댄이 붙어있는데 덴이 3개 연소 깅ㅆ다.
@@ -24,6 +22,7 @@ const arr1 = [1, 2, 3];
 const arr2 = [1, 2, 3];
 // keyof readonly [1, 2, 3]
 const key2 = '2'; // 아마 keyof T = '0' | '1' | '2' | 'Leongth' 일 것으로 추정된다.
+export {};
 // p1, p2, p3은 readonly라 수정할 순 없는데 -readonly가 있기 때문에 키는 수정 가능하다.
 // 벨류 분석
 // Awaited<T[P]>

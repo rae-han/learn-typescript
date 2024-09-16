@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 [1, 2, 3].forEach((value) => console.log(value)); //  value 가 자동으로 number타입이 된다.
 ['1', '2', '3'].forEach((value) => console.log(value)); // value 가 string으로 타입 추론 된다.
 [1, '2', true].forEach((value) => console.log(value)); // value 가 string | number | boolean 으로 타입 추론 된다.
@@ -42,3 +40,4 @@ const stringFiltered2 = ['1', 2, '3', 4, '5'].filter(predicate);
 // 그럼에도 안되는 이유는 커스텀 타입 가드가 안되기 때문이다.
 // 함수 형식에 형식 조건자 즉 value is string 이 있어야 한다. 그러므로 아래 코드는 동작한다.
 const result = ['1', 2, '3', 4, '5'].filter(predicate);
+export {};

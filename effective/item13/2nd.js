@@ -1,3 +1,11 @@
-var tuple = [10, 20];
-const result = tuple.map(function (item) { return item; });
-console.log(result)
+"use strict";
+// interface Tuple {
+//   [key: number]: number,
+//   length: number;
+// }
+//
+// const tuple: Tuple = [10, 20];
+//
+// tuple.map(item => item)
+//
+// export {}

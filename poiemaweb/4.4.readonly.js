@@ -1,7 +1,8 @@
 "use strict";
 class Constants {
+    _PI = 3.14;
+    _GoldenRatio;
     constructor() {
-        this._PI = 3.14;
         this._GoldenRatio = 1.618;
     }
     log() {

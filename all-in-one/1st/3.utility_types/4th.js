@@ -1,11 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const obj = { name: 'reahan' };
 function print() {
     console.log(this.name);
 }
 const printName = print.bind(obj);
 printName();
+export {};
 // bind 메서드가 오버로딩이 많이 돼 있는 이유
 // bind 는 this가 있는 경우와 없는 경우 두가지가 있다.(인수로 넣어줄 때)
 // this를 덮어 씌우던가 null과 함께 인수를 추가하면 매개변수에 인수를 미리 추가해서 넣어준다.

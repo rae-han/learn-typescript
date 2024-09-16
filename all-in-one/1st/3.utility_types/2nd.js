@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 function zip(x, y, z) {
     return { x, y, z };
 }
@@ -7,6 +5,9 @@ function zip(x, y, z) {
 // 매개변수나 인스턴스 자리에 infer를 넣는 순간 그 자리가 추론이 되는 것이다.
 // 타입 스크립트의 추론 능력을 믿고
 class ConstructorClass {
+    x;
+    y;
+    z;
     constructor(x, y, z) {
         this.x = x;
         this.y = y;
@@ -28,4 +29,5 @@ const i = new ConstructorClass('abc', 123, false);
 const introduction = 'Hello world';
 // @ts-ignore
 const upperIntroduction; // 타입 이름을 대문자로 만들어버린다.
+export {};
 // this의 타입을 내부적으로 어떻게해서 가져온다.

@@ -1,4 +1,3 @@
-"use strict";
 // function binarySearch<T>(xs: T[], x: T): boolean {
 //   let low = 0,
 //     high = xs.length - 1;
@@ -10,9 +9,8 @@
 //   }
 //   return false;
 // }
-exports.__esModule = true;
 function isSorted(xs) {
-    for (var i = 1; i < xs.length; i++) {
+    for (let i = 1; i < xs.length; i++) {
         if (xs[i] > xs[i - 1]) {
             return false;
         }
@@ -24,7 +22,8 @@ function binarySearch(xs, x) {
     return true;
     // END
 }
-var meters = function (m) { return m; };
-var seconds = function (s) { return s; };
-var oneKm = meters(1000); // Type is Meters
-var oneMin = seconds(60); // Type is Seconds
+const meters = (m) => m;
+const seconds = (s) => s;
+const oneKm = meters(1000); // Type is Meters
+const oneMin = seconds(60); // Type is Seconds
+export {};

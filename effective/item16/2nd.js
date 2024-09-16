@@ -1,6 +1,13 @@
-var arr = [1, 2, 3];
-var items = Object.entries(arr);
-for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {
-    var _a = items_1[_i], key = _a[0], value = _a[1];
+const arr = [1, 2, 3];
+const items = Object.entries(arr);
+for (const [key, value] of items) {
     console.log(typeof key, typeof value); // string number
+    // items[key]
 }
+const keys = Object.keys(arr); // type string[]
+for (const key in arr) {
+    const value = arr[key];
+    // string을 number에 할당할 수 없는데 동작한다??
+    // 배열을 순회하는 코드 스타일에 대한 실용적 허용이다.
+}
+export {};

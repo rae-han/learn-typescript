@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const numbers = [1, 2, 3];
 // const strings: Arr<string> = ['a', 'b', 'c'];
 //
@@ -23,3 +21,4 @@ const filteredString = mixedTypeData.filter((value) => typeof value === 'string'
 // 가독성을 조금 더 높이려면 predicate 내부 함수를 따로 적어준다.
 const predicate = (value) => typeof value === 'number'; // 다만 여기서도 형식을 맞추기 위해 형식 조건자인 value is number를 반드시 적어줘야 한다.
 const filteredNumbers = mixedTypeData.filter(predicate);
+export {};

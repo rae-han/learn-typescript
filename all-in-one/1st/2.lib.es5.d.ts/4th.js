@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 // # 공변성과 반공변성
 // - 함수 간에 대입이 되냐 안되냐
 function toNumber(x) {
@@ -22,3 +20,4 @@ function sub(x) {
     return 0;
 }
 let up = sub;
+export {};

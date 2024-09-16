@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const raehan = {
     name: 'raehan',
     age: 30,
@@ -46,4 +44,5 @@ const readonlyHan = {
 const sample1 = { a: 1, b: 2, c: 3 };
 // 샘플 코드를 만들때 위와 같이 할수도 있지만
 const sample2 = { a: 1, b: 2, c: 3 };
+export {};
 // null 또는 undefined에 속하면 never 그게 아니면 그대로

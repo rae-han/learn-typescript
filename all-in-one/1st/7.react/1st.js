@@ -1,31 +1,6 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
 // 모듈 명 밑에(import)가 에러가 나면 해당 모듈을 사용하는 코드는 모두 에러가 안나므로 모듈에 에러가 없는지 먼저 확인해야한다.
-const React = __importStar(require("react"));
-const react_1 = require("react");
+import * as React from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 // const WordRelay: FunctionComponent = () => {
 // (props) => JSX
 // WordRelay가 React.Element 에서 JSX.Element 로 바꼈다. 사실상 타고 올라가면 같은 것이다.
@@ -41,16 +16,16 @@ const react_1 = require("react");
 // VFC는 칠드런이 없고 FC는 칠드런이 있다. 17버전까진 그랬는데 지금은 FC로 통일 됐다.
 // 이제 children을 받고 싶다면, props 타입에 children?: ReactNode | undefined 를 추가해 줘야한다.
 function WordRelay(props) {
-    const [word, setWord] = (0, react_1.useState)('제로초');
+    const [word, setWord] = useState('제로초');
     // <string> 은 자동으로 초론된다.
     // function useState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
-    const [value, setValue] = (0, react_1.useState)('');
-    const [result, setResult] = (0, react_1.useState)('');
-    const inputEl = (0, react_1.useRef)(null);
-    (0, react_1.useEffect)(() => {
+    const [value, setValue] = useState('');
+    const [result, setResult] = useState('');
+    const inputEl = useRef(null);
+    useEffect(() => {
         console.log('useEffect');
     }, []);
-    (0, react_1.useEffect)(() => {
+    useEffect(() => {
         setWord((prev) => {
             // setWord 함수는 비동기지만, 반환 값이 promise가 아닌 void이기 때문에 async를 붙일 수 없다.
             return prev + '2';
@@ -97,7 +72,7 @@ function WordRelay(props) {
     // as로 강제 형변환 하면 이게 된다.
     // const deps: any[] = [] // 1
     const deps = []; // 1
-    (0, react_1.useEffect)(() => {
+    useEffect(() => {
         return () => {
             // clean up 함수는 리턴 값이 없어야한다.
         };
@@ -109,11 +84,11 @@ function WordRelay(props) {
     // 하지만 deps 말고 그냥 배열 값 [] 을 넣어주면 두번째 배열이 컨텍추얼 인퍼런스 문맥적 추론으로 자동으로 리드온리 어레이로 추론이 된다.
     // useCallback의 첫번째 매개변수는 any[] => any 에서 Function 으로 바꼈다.
     // 전자는 매개변수, 리턴값이 애니로 타이핑 돼 잇는데 Function은 없어서 타이핑을 따로 해줘야한다.
-    (0, react_1.useCallback)((e) => { }, []); // e의 타입을 안적어주면 에러가 난다.
-    (0, react_1.useCallback)((e) => { }, []);
+    useCallback((e) => { }, []); // e의 타입을 안적어주면 에러가 난다.
+    useCallback((e) => { }, []);
     // 마우스일 경우 제네릭이 다르다.
     // 만약 마우스 이벤트를 react 가 아닌 다른 파일에서 가져온다면 맨 위 import에 명확하게 적어주면 제대로 코드에 연결된다. 실제 동작에는 문제 없다.
-    const onSubmitForm = (0, react_1.useCallback)((e) => {
+    const onSubmitForm = useCallback((e) => {
         e.preventDefault();
         const input = inputEl.current;
         if (word[word.length - 1] === value[0]) {
@@ -139,21 +114,19 @@ function WordRelay(props) {
             }
         }
     }, [word, value]);
-    const onChange = (0, react_1.useCallback)((e) => {
+    const onChange = useCallback((e) => {
         setValue(e.currentTarget.value);
     }, []);
-    return (<>
-      <div>{word}</div>
-      <form onSubmit={onSubmitForm}>
-        <input ref={inputEl} value={value} onChange={onChange}/>
-        <button>입력!</button>
-    </form>
-    <div>{result}</div>
-  </>);
+    return (React.createElement(React.Fragment, null,
+        React.createElement("div", null, word),
+        React.createElement("form", { onSubmit: onSubmitForm },
+            React.createElement("input", { ref: inputEl, value: value, onChange: onChange }),
+            React.createElement("button", null, "\uC785\uB825!")),
+        React.createElement("div", null, result)));
 }
 ;
 // 타입스크립트를 도입하더라도 모든걸 다 엄격하게 검사해주는 건 아니다.
 // 라이브리별로 약간 기본값을 준다던가 여유있게 설계해둔 것이 있는데, 그렇다고 그냥 넘겨쓰지 말고 정확하게 기입하는 것을 지향해야한다.
 // bivarianceHack 이변성
 //
-exports.default = WordRelay;
+export default WordRelay;

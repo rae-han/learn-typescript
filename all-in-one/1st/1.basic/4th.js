@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 // // # 타입을 집합으로 생각하자.
 // type A = string | number;
 // type B = string;

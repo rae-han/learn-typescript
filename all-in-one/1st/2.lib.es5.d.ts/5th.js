@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 add(1, 2);
 add(1, 2, 3);
 const add123 = (x, y) => x + y;
@@ -10,3 +8,4 @@ class A {
         return x + y;
     }
 }
+export {};

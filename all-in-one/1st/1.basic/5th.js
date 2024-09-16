@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 // // interface는 2번 선언하면 선언한 타입들이 합쳐지지만 type alias는 에러가 난다.
 // // interface A { name: string }
 // // interface A { age: number }
