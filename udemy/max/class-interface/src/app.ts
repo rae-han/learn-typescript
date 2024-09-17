@@ -43,3 +43,30 @@ const person2 = new Person2('Max');
 
 person1.printName();
 person2.printName();
+
+class Person {
+  private static instance: Person;
+
+  private constructor(private name: string) {}
+
+  static getInstance(name?: string) {
+    if (Person.instance) {
+      return this.instance;
+    }
+
+    if (!name) {
+      throw new Error('No name provided');
+    }
+
+    this.instance = new Person(name);
+    return this.instance;
+  }
+
+  printName(this: Person) {
+    console.log(this.name);
+  }
+}
+
+const personA = Person.getInstance('Raehan');
+const personB = Person.getInstance();
+console.log('personA is personB: ', personA === personB);
