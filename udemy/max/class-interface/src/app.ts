@@ -1,72 +1,62 @@
-class Department {
-  name: string;
+type Blue = {
+  color: string;
+  blue: boolean;
+};
 
-  constructor(name: string) {
-    this.name = name;
-  }
+type Red = {
+  color: string;
+  red: boolean;
+};
 
-  describe(this: Department) {
-    console.log('Department: ' + this.name);
-  }
+type Purple1 = Blue & Red;
+
+const purple1: Purple1 = {
+  color: 'purple',
+  blue: true,
+  red: true,
+};
+
+type Purple2 = Blue | Red;
+
+const purple2: Purple2 = {
+  color: 'purple',
+  red: true,
+};
+
+interface Bird {
+  _type: 'bird';
+  flyingSpeed: number;
 }
 
-const accounting = new Department('Accounting');
-
-accounting.describe();
-
-const accountingCopy = { name: 'dummy', describe: accounting.describe };
-
-accountingCopy.describe();
-
-class Person1 {
-  private name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
-
-  printName(this: Person1) {
-    console.log(this.name);
-  }
+interface Horse {
+  _type: 'holse';
+  runningSpeed: number;
 }
 
-class Person2 {
-  constructor(private name: string) {}
-
-  printName(this: Person2) {
-    console.log(this.name);
-  }
+declare class Whale {
+  _type: 'whale';
+  swimmingSpeed: number;
 }
 
-const person1 = new Person1('Raehan');
-const person2 = new Person2('Max');
+type Animal = Bird | Horse | Whale;
 
-person1.printName();
-person2.printName();
-
-class Person {
-  private static instance: Person;
-
-  private constructor(private name: string) {}
-
-  static getInstance(name?: string) {
-    if (Person.instance) {
-      return this.instance;
-    }
-
-    if (!name) {
-      throw new Error('No name provided');
-    }
-
-    this.instance = new Person(name);
-    return this.instance;
+const moveAnimal = (animal: Animal) => {
+  let speed;
+  switch (animal._type) {
+    case 'bird':
+      speed = animal.flyingSpeed;
+      break;
+    case 'holse':
+      speed = animal.runningSpeed;
+      break;
+    default:
+      speed = 0;
+      break;
   }
+  console.log('Moving at speed: ' + speed);
+};
 
-  printName(this: Person) {
-    console.log(this.name);
-  }
-}
-
-const personA = Person.getInstance('Raehan');
-const personB = Person.getInstance();
-console.log('personA is personB: ', personA === personB);
+moveAnimal({
+  _type: 'whale',
+  swimmingSpeed: 5,
+})
