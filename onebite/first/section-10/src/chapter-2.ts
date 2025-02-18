@@ -35,9 +35,16 @@ type Omit<T, K extends keyof T> = {
 //   [Key in keyof T extends K ? K : never]: T[Key];
 // };
 
+type Expand<T> = T extends infer O ? { [K in keyof O]: O[K] } : never;
+type ExpandOmitType = Omit<Post, 'title'>;
+
 const noTitlePost: Omit<Post, 'title'> = {
-  title: '',
+  // title: '',
   content: '',
   tags: [] as string[],
   thumbnailURL: '',
+};
+
+type Record<K extends PropertyKey, O> = {
+  [Key in K]: O;
 };
