@@ -11,7 +11,11 @@ interface Post {
   thumbnailURL?: string;
 }
 
-const legacyPost: Post = {
+type Pick<T, K extends keyof T> = {
+  [Key in K]: T[Key];
+};
+
+const legacyPost: Pick<Post, 'title' | 'content'> = {
   title: '',
   content: '',
 };
