@@ -27,13 +27,10 @@ const legacyPost: Pick<Post, 'title' | 'content'> = {
  */
 type Exclude<T, U> = T extends U ? never : T;
 
-type Omit<T, K extends keyof T> = {
-  [Key in keyof T as Key extends K ? never : Key]: T[Key];
-};
-
 // type Omit<T, K extends keyof T> = {
-//   [Key in keyof T extends K ? K : never]: T[Key];
+//   [Key in keyof T as Key extends K ? never : Key]: T[Key];
 // };
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 type Expand<T> = T extends infer O ? { [K in keyof O]: O[K] } : never;
 type ExpandOmitType = Omit<Post, 'title'>;
