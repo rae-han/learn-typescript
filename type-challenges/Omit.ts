@@ -16,3 +16,25 @@ type ExpandOmitType = Expand<Omit2<{ title: string; content: string }, 'title'>>
 type Omit3<T, K extends keyof T> = {
   [Key in keyof T as Key extends K ? never : Key]: T[Key];
 };
+
+const size = {
+  s: 90,
+  m: 95,
+  l: 100,
+  xl: 105,
+} as const;
+
+type Size = typeof size;
+
+function getNamesExactly<const T extends HasNames>(arg: T): T['names'] {
+  //                       ^^^^^
+  return arg.names;
+}
+
+function getSize<T extends keyof Size>(key: T): Size[T] {
+  return size[key];
+}
+
+// 사용 예시
+const result1 = getSize('s'); // 정확히 90으로 타입 추론
+const result2 = getSize('m'); // 정확히 95로 타입 추론

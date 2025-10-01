@@ -32,7 +32,6 @@ type Omit<T, K extends keyof T> = {
 };
 
 type KeyOf = Expand<keyof Post>;
-type KeyOfAs = Expand<keyof Post as 'title'>;
 
 // type Omit<T, K extends keyof T> = {
 //   [Key in keyof T extends K ? K : never]: T[Key];
