@@ -1,6 +1,4 @@
-type MyReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R
-  ? R
-  : never;
+type MyReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : never;
 
 // 사용 예시
 type GreetingFn = (name: string) => { message: string };
