@@ -24,3 +24,7 @@ declare const b: number[];
 
 const test1 = merge4(a, b);
 const test2 = merge4([1, 2, 3], ['a', 'b', 'c']);
+
+function tuple<T extends unknown[]>(...args: T): T {
+  return args;
+}
