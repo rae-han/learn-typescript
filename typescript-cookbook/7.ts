@@ -28,3 +28,18 @@ const test2 = merge4([1, 2, 3], ['a', 'b', 'c']);
 function tuple<T extends unknown[]>(...args: T): T {
   return args;
 }
+
+declare const numbers: number[];
+const t1 = tuple('foo', 1, true);
+const t2 = tuple('bar', ...numbers);
+// 이건 왜 튜플로 추론?
+
+function argsTest1(a, b, ...c) {
+  console.log(a, b, c);
+}
+
+function argsTest2(...a, b, c) {
+  console.log(a, b, c);
+}
+
+type Fn<Args extends unknown[], Result> = (...args: [...Args, (result: Result) => void]) => void;
