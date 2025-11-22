@@ -43,3 +43,13 @@ function argsTest2(...a, b, c) {
 }
 
 type Fn<Args extends unknown[], Result> = (...args: [...Args, (result: Result) => void]) => void;
+
+function loadFile(...args: [string, string, (result: File) => void]) {
+  // 구 현 중
+}
+function request2(...args: [URL, (result: JSON) => void]) {
+  // 구 현 중
+}
+
+type LoadFileFn = Fn<[string, string], File>;
+type RequestFn = Fn<[URL], JSON>;
