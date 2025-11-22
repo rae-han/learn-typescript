@@ -34,12 +34,16 @@ const t1 = tuple('foo', 1, true);
 const t2 = tuple('bar', ...numbers);
 // 이건 왜 튜플로 추론?
 
-function argsTest1(a, b, ...c) {
+function argsTest1(a: string, b: string, ...c: string[]) {
   console.log(a, b, c);
 }
 
-function argsTest2(...a, b, c) {
+function argsTest2(...a: string[], b: string, c: string) {
   console.log(a, b, c);
+}
+
+function argsTest3(r: [...string[], string]) {
+  console.log(...r);
 }
 
 type Fn<Args extends unknown[], Result> = (...args: [...Args, (result: Result) => void]) => void;
