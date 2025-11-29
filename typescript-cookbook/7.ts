@@ -57,3 +57,10 @@ function request2(...args: [URL, (result: JSON) => void]) {
 
 type LoadFileFn = Fn<[string, string], File>;
 type RequestFn = Fn<[URL], JSON>;
+
+function partialRight<T extends any[], U extends any[], R>(
+  fn: (...args: [...T, ...U]) => R,
+  args: U,
+): (...rest: T) => R {
+  return (...rest: T) => fn(...rest, ...args);
+}
