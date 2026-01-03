@@ -18,6 +18,7 @@
     "follow-redirects": "^1.15.2",
     "form-data": "^4.0.0",
     "formdata-polyfill": "^4.0.10",
+    "jest": "^30.2.0",
     "js-tokens": "^4.0.0",
     "lodash": "^4.17.21",
     "loose-envify": "^1.4.0",
@@ -47,6 +48,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.8",
+    "ts-jest": "^29.4.6",
     "typescript": "^5.7.3"
   }
 }
