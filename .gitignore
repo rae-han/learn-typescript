@@ -109,3 +109,6 @@ dist
 **/.idea
 */.idea/*
 **/.idea/*
+
+# Origin markdown files
+*.origin.md
